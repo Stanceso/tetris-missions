@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тетрис: Миссии и Испытания</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">HTML5 Canvas Edition</p>
+        <h1>Тетрис: Миссии и Испытания</h1>
+      </div>
+      <div class="mode-select" aria-label="Режим игры">
+        <button class="mode is-active" data-mode="classic" type="button">Классика</button>
+        <button class="mode" data-mode="timed" type="button">5 минут</button>
+        <button class="mode" data-mode="endless" type="button">Бесконечный</button>
+        <button class="mode" data-mode="hardcore" type="button">Хардкор</button>
+        <button class="mode" data-mode="challenge" type="button">Испытания</button>
+      </div>
+    </section>
+
+    <section class="game-layout">
+      <aside class="panel left-panel">
+        <div class="panel-section">
+          <h2>Статистика</h2>
+          <div class="stats-grid">
+            <div><span>Счёт</span><strong id="score">0</strong></div>
+            <div><span>Уровень</span><strong id="level">1</strong></div>
+            <div><span>Линии</span><strong id="lines">0</strong></div>
+            <div><span>Время</span><strong id="time">00:00</strong></div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h2>Следующая</h2>
+          <canvas id="nextCanvas" width="120" height="120" aria-label="Следующая фигура"></canvas>
+        </div>
+
+        <div class="panel-section">
+          <h2>Рекорды</h2>
+          <ol id="leaderboard" class="leaderboard"></ol>
+        </div>
+      </aside>
+
+      <section class="stage" aria-label="Игровое поле">
+        <canvas id="gameCanvas" width="320" height="640"></canvas>
+
+        <div id="startScreen" class="screen">
+          <h2>Готовы к испытанию?</h2>
+          <p>Выберите режим и начните игру. Миссии дают бонусные очки, достижения сохраняются автоматически.</p>
+          <button id="startBtn" class="primary" type="button">Начать игру</button>
+        </div>
+
+        <div id="pauseScreen" class="screen is-hidden">
+          <h2>Пауза</h2>
+          <p>Нажмите P или кнопку ниже, чтобы продолжить.</p>
+          <button id="resumeBtn" class="primary" type="button">Продолжить</button>
+        </div>
+
+        <div id="gameOverScreen" class="screen is-hidden">
+          <h2>Игра окончена</h2>
+          <p id="finalScore">Ваш счёт: 0</p>
+          <button id="restartBtn" class="primary" type="button">Перезапуск</button>
+        </div>
+      </section>
+
+      <aside class="panel right-panel">
+        <div class="panel-section">
+          <h2>Задачи</h2>
+          <div id="missions" class="mission-list"></div>
+        </div>
+
+        <div class="panel-section">
+          <h2>Ежедневные миссии</h2>
+          <div id="dailyMissions" class="mission-list compact"></div>
+        </div>
+
+        <div class="panel-section">
+          <h2>Достижения</h2>
+          <div id="achievements" class="achievement-list"></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="footer-controls">
+      <div class="control-buttons" aria-label="Игровые кнопки">
+        <button id="leftBtn" type="button">←</button>
+        <button id="rightBtn" type="button">→</button>
+        <button id="downBtn" type="button">↓</button>
+        <button id="rotateBtn" type="button">↻</button>
+        <button id="dropBtn" type="button">⤓</button>
+        <button id="pauseBtn" type="button">P</button>
+      </div>
+
+      <div class="settings">
+        <label>
+          Эффекты
+          <input id="sfxVolume" type="range" min="0" max="1" step="0.01" value="0.45">
+        </label>
+        <label>
+          Музыка
+          <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.18">
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
